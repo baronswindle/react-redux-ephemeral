@@ -1,0 +1,13 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true,
+    }
+  },
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": 0  
+  }
+}
