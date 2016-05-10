@@ -1,6 +1,6 @@
 {
   "name": "react-redux-ephemeral",
-  "version": "0.0.1-alpha",
+  "version": "0.0.1-alpha-1",
   "description": "React binding for local, ephemeral Redux state management",
   "main": "lib/index.js",
   "scripts": {
