@@ -110,6 +110,7 @@ export default function connect(config = {}) {
         const isKeyAlreadyMounted = stateAtKey !== undefined;
         const initial = (() => {
           if (isKeyAlreadyMounted) return stateAtKey;
+          if (typeof initialState === 'function') return initialState(this.props);
           if (initialState !== undefined) return initialState;
           return reducer(initialState, {});
         })();

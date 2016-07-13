@@ -15,11 +15,12 @@ The component returned by `connect()` expects to be passed the redux store as a 
 #### Arguments
   - `key` **Required**
     * *String*: Specifies the key on `state.ephemeral` where the component's local state will be mounted.
-    * *Function*: `id(props) -> String`. Accepts the component's props as an arguments and returns a string that specifies the key on `state.ephemeral` where the component's local state will be mounted.
-  - `reducer` **Required** 
+    * *Function*: `id(props) -> String`. Accepts the component's props as an argument and returns a string that specifies the key on `state.ephemeral` where the component's local state will be mounted.
+  - `reducer` **Required**
     * *Function*: `reducer(state, action) -> newState`. Reducer that accepts the local state and action as arguments and returns the new local state.
   - [`initialState`]
-    * The initial value of the component's local state. If you don't define this here, be sure to handle the possibility of undefined initial state when you write your reducer.
+    * *Function*: `initialState(props) -> value`. Accepts the component's props as an argument and returns the initial value of the component's local state.
+    * *Value*: The initial value of the component's local state. If you don't define this here, be sure to handle the possibility of undefined initial state when you write your reducer.
   - [`mapDispatchToProps`]
     * *Function*: `mapDispatchToProps(localDispatch, ownProps) -> dispatchProps`.
     * *Object*
@@ -27,7 +28,7 @@ The component returned by `connect()` expects to be passed the redux store as a 
   - [`mergeProps`]
     * *Function*: `mergeProps(dispatchProps, ephemeralProps, ownProps) -> mergedProps`. This function receives as arguments the result of `mapDispatchToProps`, the value stored at `state.ephemeral[key]`, and the props passed to the component by its parent. If you don't pass your own function as an argument to `connect`, it returns `Object.assign({}, ownProps, ephemeralProps, dispatchProps)` by default.
 
-    
+
 ## Purpose
 
 If you've built an app of significant size using React and Redux, you likely have struggled with the problem of managing state that is specific to a particular instance of a component. For example, imagine you're building a shopping cart, and each item in the cart has its own component. Each component has a toggleable description. Where should you store the values that represent whether each item's description is expanded or collapsed? Two options come to mind immediately - in the Redux store and in the tab component's state (i.e., `this.state`).
