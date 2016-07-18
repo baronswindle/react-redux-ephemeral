@@ -7,11 +7,11 @@ import TestUtils from 'react-addons-test-utils';
 import { connect, reducer as ephemeralReducer } from '../src';
 
 describe('connect', function () {
-  
+
   beforeEach(function () {
     expect.spyOn(console, 'error')
   });
-   
+
   afterEach(function () {
     expect.restoreSpies()
   });
@@ -87,6 +87,49 @@ describe('connect', function () {
     expect(stub.props.local).toBeAn(Object);
     expect(stub.props.local.test).toBe(true);
     expect(stub.props.local.notTest).toBe(undefined);
+
+  });
+
+  it('should initialize state as a function of props', function () {
+
+    const initialState = (props) => ({ test: props.testValue === 4 });
+
+    const store = createStore(globalReducer);
+
+    const ConnectedLocal = connect({
+      key: 'local',
+      reducer: localReducer,
+      initialState
+    })(Local);
+
+    const tree = TestUtils.renderIntoDocument(
+      <Provider store={store}>
+        <ConnectedLocal testValue={4} />
+      </Provider>
+    );
+
+    const stub = TestUtils.findRenderedComponentWithType(tree, Local);
+
+    expect(stub.props.local).toBeAn(Object);
+    expect(stub.props.testValue).toBe(4);
+    expect(stub.props.local.test).toBe(true);
+
+    const ConnectedLocal2 = connect({
+      key: 'local2',
+      reducer: localReducer,
+      initialState
+    })(Local);
+
+    const tree2 = TestUtils.renderIntoDocument(
+      <Provider store={store}>
+        <ConnectedLocal2 testValue={3} />
+      </Provider>
+    );
+
+    const stub2 = TestUtils.findRenderedComponentWithType(tree2, Local);
+
+    expect(stub2.props.testValue).toBe(3);
+    expect(stub2.props.local.test).toBe(false);
 
   });
 
