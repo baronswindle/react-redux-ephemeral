@@ -6,7 +6,7 @@ Before opening an issue, please search the [issue tracker](https://github.com/ba
 
 ## Development
 
-Visit the [Issue tracker](https://github.com/reactjs/react-redux/issues) to find a list of open issues that need attention.
+Visit the [Issue tracker](https://github.com/baronswindle/react-redux-ephemeral/issues) to find a list of open issues that need attention.
 
 Fork, then clone the repo:
 ```
