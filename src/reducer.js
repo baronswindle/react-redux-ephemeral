@@ -65,14 +65,14 @@ function unmount(state, payload) {
 function set(state, payload) {
   const {
     ephemeral: {
-      action,
       key,
-      reducer
+      newState,
+      action
     }
   } = payload;
   return update(state, {
     [key]: {
-      $apply: stateAtKey => reducer(stateAtKey, action)
+      $set: newState
     }
   });
 }

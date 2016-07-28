@@ -156,7 +156,8 @@ export default function connect(config = {}) {
       }
 
       dispatchLocal(action) {
-        const localAction = toEphemeral(this.key, reducer, action);
+        const newState = reducer(this.state.local, action);
+        const localAction = toEphemeral(this.key, newState, action);
         this.store.dispatch(localAction);
       }
 

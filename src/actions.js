@@ -1,13 +1,13 @@
 import { MOUNT, UNMOUNT, SET } from './reducer';
 
-export function toEphemeral(key, reducer, action) {
+export function toEphemeral(key, newState, action) {
   return {
     type: SET,
     payload: {
       ephemeral: {
-        action,
         key,
-        reducer
+        newState,
+        action
       }
     }
   };
