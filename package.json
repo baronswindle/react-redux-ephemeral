@@ -25,13 +25,13 @@
   "license": "MIT",
   "homepage": "https://github.com/baronswindle/react-redux-ephemeral",
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0-0",
+    "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0",
     "redux": "^2.0.0 || ^3.0.0 || ^4.0.0"
   },
   "dependencies": {
     "hoist-non-react-statics": "^1.0.5",
-    "lodash.omit": "^4.2.1",
-    "react-addons-update": "^0.14.0"
+    "immutability-helper": "^2.4.0",
+    "lodash.omit": "^4.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.8.0",
