@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
-import update from 'react-addons-update';
+import update from 'immutability-helper';
 import omit from 'lodash.omit';
 import { createReducer } from './utils';
 
